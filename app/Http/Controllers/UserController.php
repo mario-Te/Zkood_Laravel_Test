@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -46,9 +47,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        
         return response()->json([ 
-            'image_path'=> $user->image_path
+            'image_path'=> $user->getImagePathAttribute()
         ]);
     }
 

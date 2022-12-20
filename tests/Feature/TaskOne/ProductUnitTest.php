@@ -6,7 +6,7 @@ use Tests\Feature\BaseTest;
 
 class ProductUnitTest extends BaseTest
 {
-    /*
+ 
     public function test_adding_product_inventory()
     {
         $this->createProduct(['name' => 'Flour']);
@@ -75,7 +75,7 @@ class ProductUnitTest extends BaseTest
         $response->assertOk();
         $this->assertEquals(453.59237 + 50, $response->json('total_quantity'));
     }
-*/
+
     public function test_get_quantity_by_unit()
     {
         $this->createProduct(['name' => 'Flour']);

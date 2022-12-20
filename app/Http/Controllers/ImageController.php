@@ -44,14 +44,12 @@ class ImageController extends Controller
         if($request->o_type == 'user')
            {
             $user = User::find($request->o_id);
-            $user->image_path=$request->path;
            }
         if($request->o_type == 'product')
         {
             $product = Product::find($request->o_id);
-            dd($product);
-            $product->image_path=$request->path;
         }
+      
     }
 
     /**

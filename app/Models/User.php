@@ -48,7 +48,8 @@ class User extends Authenticatable
 
     public function getImagePathAttribute()
     {
-        return $this->append('image_path')->toArray();
+        $img =Image::where('path',  'like', '%'. $this->name.'%')->first();
+        return ($img->path);     
     }
     
 }
