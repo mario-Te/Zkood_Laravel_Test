@@ -55,10 +55,12 @@ class ProductController extends Controller
         $pivot_unit=$def_unit->modifier;
        }
        $result=$product->getTotalQuantityAttribute()/$pivot_unit;
+       
        return response()->json([
         'total_quantity_by_unit_id' => $result,
         'total_quantity' => $result,
-        'image_path'=>$product->getImagePathAttribute()
+        'image_path'=> $product->getImagePathAttribute->path
+       
         ]); 
 
     }

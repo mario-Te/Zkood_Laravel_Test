@@ -35,7 +35,6 @@ class Product extends Model
 
     public function getImagePathAttribute()
     {
-        $img =Image::where('path',  'like', '%'. $this->name.'%')->first();
-        return ($img->path);    
+        return $this->morphOne(Image::class, 'o');    
     }
 }

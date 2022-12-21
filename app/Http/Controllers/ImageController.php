@@ -40,14 +40,21 @@ class ImageController extends Controller
         $img=new Image();
         $img->path=$request->path;
         $img->description=$request->description;   
-        $img->save();
+      
         if($request->o_type == 'user')
            {
             $user = User::find($request->o_id);
+            $img->o_id=$user->id;
+            $img->o_type = 'user';
+            $user->getImagePathAttribute()->save($img);
            }
         if($request->o_type == 'product')
         {
             $product = Product::find($request->o_id);
+            $img->o_id=$product->id;
+            $img->o_type = 'product';
+            $product->getImagePathAttribute()->save($img);
+           
         }
       
     }
