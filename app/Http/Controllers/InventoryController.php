@@ -35,7 +35,7 @@ class InventoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         
         $product = Product::find($request->product_id);
         $unit = Unit::find($request->unit_id);

@@ -35,7 +35,8 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        Unit::create($request->all());
+        Unit::create($request->all())->save();
+      
     }
 
     /**

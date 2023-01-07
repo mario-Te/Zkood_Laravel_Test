@@ -36,7 +36,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        
         Product::create($request->all());
+       
     }
 
     /**
@@ -54,12 +56,17 @@ class ProductController extends Controller
         $def_unit = Unit::find($request->unit_id);
         $pivot_unit=$def_unit->modifier;
        }
-       $result=$product->getTotalQuantityAttribute()/$pivot_unit;
+       $image_path="";
+       if(!is_null($product->getImagePathAttribute))
+        {
+            $image_path=$product->getImagePathAttribute->path;
+        }
        
+       $result=$product->getTotalQuantityAttribute()/$pivot_unit;
        return response()->json([
         'total_quantity_by_unit_id' => $result,
         'total_quantity' => $result,
-        'image_path'=> $product->getImagePathAttribute->path
+       'image_path'=> $image_path
        
         ]); 
 

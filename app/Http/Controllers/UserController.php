@@ -47,8 +47,13 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $image_path="";
+       if(!is_null($user->getImagePathAttribute))
+        {
+            $image_path=$user->getImagePathAttribute->path;
+        }
         return response()->json([ 
-            'image_path'=> $user->getImagePathAttribute->path
+            'image_path'=> $image_path
         ]);
     }
 

@@ -1,13 +1,32 @@
 <?php
 
 namespace Tests\Feature\TaskOne;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+
 use Tests\Feature\BaseTest;
 
 class ProductUnitTest extends BaseTest
 {
-    use RefreshDatabase;
-   
+    public function test_adding_product_inventory()
+    {
+        $this->createProduct(['name' => 'Flour']);
+        $this->createUnit([
+            'name' => 'Gram',
+            'modifier' => 1,
+        ]);
+        $this->createUnit([
+            'name' => 'Kilo Gram',
+            'modifier' => 1000,
+        ]);
+        $productUnit = [
+            'product_id' => 1,
+            'unit_id' => 1,
+            'amount' => 1,
+        ];
+        $response = $this->post('inventories', $productUnit);
+        $this->assertDatabaseHas('product_unit', $productUnit);
+        $response->assertStatus(200);
+    }
+
     public function test_inventory_1()
     {
         $this->createProduct(['name' => 'Flour']);

@@ -1,13 +1,11 @@
 <?php
 
 namespace Tests\Feature\TaskOne;
-
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\BaseTest;
 
 class ProductTest extends BaseTest
 {
-    use RefreshDatabase;
+  
 
     public function test_create_products()
     {
@@ -21,4 +19,5 @@ class ProductTest extends BaseTest
         ];
         $this->createProduct($product2);
     }
+    
 }
